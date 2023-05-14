@@ -4,25 +4,24 @@
     export let task;
 
     const dispatch = createEventDispatcher();
+
 </script>
 
 <div class="task-card">
+
     <div style="display: flex;  margin-bottom: 1rem;">
-        {#if task.status === "completed"}
+        <!-- {#if task.status === "completed"}
             <p><del>{task.name}</del></p>
         {:else}
             <p>{task.name}</p>
-        {/if}
+        {/if} -->
+        
+        <!-- much optimized as eleminated addition if else check -->
+        <p style={`text-decoration: ${task.status === "completed" ? "line-through" : "none"}`}>{task.name}</p>
     </div>
 
-    <div
-        style=" margin-bottom: 1rem; display: flex; width: 100%; height: 5rem; flex: 1;"
-    >
-        {#if task.status === "completed"}
-            <p><del>{task.description}</del></p>
-        {:else}
-            <p>{task.description}</p>
-        {/if}
+    <div style=" margin-bottom: 1rem; display: flex; width: 100%; height: 5rem; flex: 1;">
+        <p style={`text-decoration: ${task.status === "completed" ? "line-through" : "none"}`}>{task.description}</p>
     </div>
 
     <div class="task-card-header">
